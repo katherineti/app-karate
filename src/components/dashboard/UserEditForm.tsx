@@ -42,8 +42,9 @@ import { useUser, UserRole } from "@/contexts/UserContext";
 import { Checkbox } from "../ui/checkbox";
 import { updateUser, getUsersByRole, UserData as ApiUser } from "@/services/user-data";
 import { Badge } from "../ui/badge";
+import { User } from "./UserTable";
 
-interface User {
+/* interface User {
   id: string | number;
   firstName: string;
   lastName: string;
@@ -67,7 +68,7 @@ interface User {
   certificate_front_url?: string;
   certificate_back_url?: string;
   master_photo_url?: string;
-}
+} */
 
 const allRoles: UserRole[] = ["admin", "master", "juez", "representante", "alumno"];
 const belts = [

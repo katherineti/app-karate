@@ -140,7 +140,7 @@ export async function getPaginatedUsers(
   if (search) {
       params.append('search', search);
   }
-  if (roleFilter) {
+  if (roleFilter && roleFilter !== 'all') {
       params.append('roleFilter', roleFilter);
   }
   
@@ -402,6 +402,7 @@ export async function getAthletesBySchool(
   
     return response.json() as Promise<AthleteData[]>;
   }
+
 
 
 

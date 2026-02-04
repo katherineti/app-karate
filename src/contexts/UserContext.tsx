@@ -14,13 +14,13 @@ interface User {
   roles: UserRole[];
   photoURL?: string;
   cedula?: string;
-  document_type?: string; // <--- Añade esto
   dateOfBirth?: Date;
   schoolId?: string;
   school?: string;
   belt?: string;
   ranking?: number;
   representedStudents?: Pick<User, 'id' | 'firstName' | 'lastName'>[];
+  document_type?: string; // <--- Añade esto
 }
 
 // Define la interfaz para el valor del contexto.

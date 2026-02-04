@@ -59,7 +59,7 @@ import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import { Skeleton } from "../ui/skeleton";
 
-interface User {
+export interface User {
   id: string | number;
   firstName: string;
   lastName: string;
@@ -67,6 +67,7 @@ interface User {
   roles: UserRole[];
   photoURL?: string;
   cedula?: string;
+  document_type?: string;
   dateOfBirth?: Date;
   schoolId?: string;
   school?: string;
@@ -269,8 +270,7 @@ export default function UserTable({ initialUsers, pagination, fetchUsers, isLoad
 
   const debouncedFetch = useCallback(
     debounce((page: number, limit: number, search: string, role: string) => {
-        const apiRole = role === 'all' ? undefined : role;
-        fetchUsers(page, limit, search, apiRole);
+        fetchUsers(page, limit, search, role);
     }, 500),
     [fetchUsers]
   );
@@ -299,8 +299,7 @@ export default function UserTable({ initialUsers, pagination, fetchUsers, isLoad
 
   const handlePageChange = (page: number) => {
     if (page > 0 && page <= pagination.totalPages) {
-      const apiRole = roleFilter === 'all' ? undefined : roleFilter;
-      fetchUsers(page, pagination.pageSize, searchTerm, apiRole);
+      fetchUsers(page, pagination.pageSize, searchTerm, roleFilter);
     }
   };
   
@@ -755,7 +754,7 @@ export default function UserTable({ initialUsers, pagination, fetchUsers, isLoad
                 <div className="grid gap-4 py-4 text-sm animate-in fade-in-50">
                     <div className="flex flex-col items-center space-y-4">
                       <Avatar className="h-24 w-24 rounded-md">
-                        <AvatarImage src={viewingSchool.logoUrl || undefined} className="rounded-md"/>
+                        <AvatarImage src={viewingSchool.logoUrl || undefined} className="rounded-md object-contain"/>
                         <AvatarFallback className="rounded-md bg-muted">
                             <Building className="h-10 w-10 text-muted-foreground" />
                         </AvatarFallback>

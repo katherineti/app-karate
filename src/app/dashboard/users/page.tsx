@@ -50,7 +50,7 @@ const mapApiUserToUser = (apiUser: ApiUser): User => {
     lastName: apiUser.lastname || "",
     email: apiUser.email,
     roles: userRoles,
-    photoURL: apiUser.profile_picture || `https://picsum.photos/seed/${apiUser.id}/200/200`,
+    photoURL: apiUser.profile_picture || undefined,
     dateOfBirth: apiUser.birthdate ? new Date(apiUser.birthdate) : undefined,
     cedula: cedula,
     schoolId: apiUser.school_id?.toString(),
@@ -70,7 +70,7 @@ export default function UsersPage() {
     totalRecords: 0,
     currentPage: 1,
     totalPages: 1,
-    pageSize: 5,
+    pageSize: 8,
   });
   const { toast } = useToast();
   const { user: currentUser } = useUser();
@@ -113,7 +113,7 @@ export default function UsersPage() {
   }, [toast]);
 
   useEffect(() => {
-    fetchUsers(1, 5);
+    fetchUsers(1, 8);
   }, [fetchUsers]);
 
   return (
