@@ -14,6 +14,7 @@ interface User {
   roles: UserRole[];
   photoURL?: string;
   cedula?: string;
+  document_type?: string; // <--- Añade esto
   dateOfBirth?: Date;
   schoolId?: string;
   school?: string;
