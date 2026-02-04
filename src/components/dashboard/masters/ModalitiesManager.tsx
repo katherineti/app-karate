@@ -62,7 +62,7 @@ const modalityFormSchema = z.object({
 
 type ModalityFormValues = z.infer<typeof modalityFormSchema>;
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 5;
 
 export default function ModalitiesManager() {
   const [modalities, setModalities] = useState<ApiModality[]>([]);
